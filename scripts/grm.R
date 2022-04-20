@@ -16,10 +16,11 @@ vi <- read.delim("data/data.csv", header=TRUE)
 # remove cases that completed RIASEC and demographic items in <2.5 sec / items &
 # remove that are not US respondents (avoid cultural confounding)
 vi <- vi %>% 
-  filter(testelapse > 125,
+  filter(testelapse > 125, 
          surveyelapse > 75,
          country == "US",
-         age < 100) #should I be more stringent?
+         age < 100, #should I be more stringent?
+         gender < 3) #drops 'other' cases of gender
 
 
 # delete longstring responders
@@ -72,13 +73,17 @@ summary(vi$age)
 apply(vi, 2, table)
 
 
+### Export all dataframes to csv files for DIF script
+write.csv(vi, "data/vi.csv", row.names=F)
+write.csv(R, "data/realistic.csv", row.names=F)
+write.csv(I, "data/investigative.csv", row.names=F)
+
 
 ################
  "############
   ### IRT ####
   ############"
 ################
-
 "
 ## Test assumptions (unidimensionality) ##
 ## Investigative dimension &            ##
@@ -153,7 +158,7 @@ plots.R.1
 
 
 "
-### look at model functions and parameters ###
+### look at model probability functions and parameters ###
 "
 
 ## Investigative ## 
