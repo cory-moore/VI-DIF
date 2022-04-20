@@ -19,8 +19,7 @@ vi <- vi %>%
   filter(testelapse > 125,
          surveyelapse > 75,
          country == "US",
-         age < 100)
-
+         age < 100) 
 
 # delete longstring responders
 longstring <- longstring(vi[,1:48], avg=TRUE)
