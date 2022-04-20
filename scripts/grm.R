@@ -19,7 +19,8 @@ vi <- vi %>%
   filter(testelapse > 125,
          surveyelapse > 75,
          country == "US",
-         age < 100) 
+         age < 100) #should I be more stringent?
+
 
 # delete longstring responders
 longstring <- longstring(vi[,1:48], avg=TRUE)
@@ -43,6 +44,9 @@ vi <- vi %>%
            age,
            race))
 
+# remova all missing cases (ie, 0's)
+vi[vi==0] <- NA
+vi <- vi[complete.cases(vi),]
 
 #subset further to specific interest dimensions 
 I <- vi %>%
@@ -84,13 +88,13 @@ fa.parallel(R)
 #oblique rotation
 efa.I <- fa(I, nfactors=1, rotate="oblimin")
 print(efa.I, sort=TRUE)
-efa.I$values #EFA eigenvalues
+efa.I$values #EFA eigenvalues - unidimensional (factor two eigenvalue <.1)
 efa.I$loadings
 fa.diagram(efa.I)
 
 efa.R <- fa(R, nfactors=1, rotate="oblimin")
 print(efa.R, sort=TRUE)
-efa.R$values #EFA eigenvalues
+efa.R$values #EFA eigenvalues - unidimensional (factor two eigenvalue <.1)
 efa.R$loadings
 fa.diagram(efa.R)
 
