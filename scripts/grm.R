@@ -79,14 +79,18 @@ apply(vi, 2, table)
   ############"
 ################
 
-## Test assumptions (unidimensionality ##
+"
+## Test assumptions (unidimensionality) ##
+## Investigative dimension &            ##
+## Realistic dimension                  ##
+"
 
 #scree plots
 fa.parallel(I)
 fa.parallel(R)
 
 #oblique rotation
-efa.I <- fa(I, nfactors=1, rotate="oblimin")
+efa.I <- fa(I, nfactors=1, rotate="oblimin") #Investigative dimension
 print(efa.I, sort=TRUE)
 efa.I$values #EFA eigenvalues - unidimensional (factor two eigenvalue <.1)
 efa.I$loadings
@@ -114,4 +118,78 @@ fa.diagram(efa.R2)
 rm(efa.I,efa.I2,efa.R,efa.R2)
 
 
-### RUN GRM ###
+"
+### RUN GRMs ###
+"
+grm.I.out <- mirt(I, model=1, itemtype="graded", SE=TRUE)
+grm.I.out
+
+grm.R.out <- mirt(R, model=1, itemtype="graded", SE=TRUE)
+grm.R.out
+
+
+"
+### Assess model fit ###
+"
+# Investigative
+fit.I <- itemfit(grm.I.out, x2=TRUE)
+fit.I
+
+plots.I.1 <- list()
+for(i in 1:length(I)){
+  plots.I.1[[i]] <-itemfit(grm.I.out, empirical.plot = i)
+}
+plots.I.1
+
+# Realistic
+fit.R <- itemfit(grm.R.out, x2=TRUE)
+fit.R
+
+plots.R.1 <- list()
+for(i in 1:length(I)){
+  plots.R.1[[i]] <-itemfit(grm.R.out, empirical.plot = i)
+}
+plots.R.1
+
+
+"
+### look at model functions and parameters ###
+"
+
+## Investigative ## 
+plot(grm.I.out) #expected test scores
+plot(grm.I.out, type="info") #test info
+plot(grm.I.out, type="infoSE") #item info
+plot(grm.I.out, type="trace") #item CRCs
+
+plots.I.2 <- list()
+for(i in 1:length(I)){
+  plots.I.2[[i]]<-itemplot(grm.I.out,i)
+}
+plots.I.2 #prob functions not bad 
+
+#item parameters  ## remember difficulty (b) = -d/a 
+(coef.table.I <- coef(grm.I.out, simplify = TRUE, IRTpars = TRUE)[[1]])
+par.SE.I <- coef(grm.I.out, IRTpars=TRUE, printSE=TRUE) #print SE from non-IRT format
+par.SE.I
+### NOTE you get DIFFERENT SEs for IRT parameters than default
+### RECALL that b1 = response 1 and 2, b2 = response 2 and 3, b3 = 3 and 4, b4 = 4 and 5
+
+
+## Realistic ##
+plot(grm.R.out) #expected test scores
+plot(grm.R.out, type="info") #test info
+plot(grm.R.out, type="infoSE") #item info
+plot(grm.R.out, type="trace") #item CRCs
+
+plots.R.2 <- list()
+for(i in 1:length(I)){
+  plots.R.2[[i]]<-itemplot(grm.R.out,i)
+}
+plots.R.2 ##prob functions not  bad 
+
+#item parameters
+(coef.table.R <- coef(grm.R.out, simplify = TRUE, IRTpars = TRUE)[[1]])
+par.SE.R <- coef(grm.R.out, IRTpars=TRUE, printSE=TRUE) #print SE from non-IRT format
+par.SE.R
+
