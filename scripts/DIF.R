@@ -73,7 +73,7 @@ model.constrained.R <- multipleGroup(R, 1, group.R,
                                                     'free_means', 'free_var'))
 coef(model.constrained.R, simplify = T) #different group latent means
 constrained.parameters.R <- coef(model.constrained.R, simplify = T)[[1]][[1]]
-constrained.parameters.R
+constrained.parameters.R #write this out to excel and put it in the manuscript
 
 ## Investigative dimension
 model.constrained.I <- multipleGroup(I, 1, group.I, 
@@ -81,4 +81,27 @@ model.constrained.I <- multipleGroup(I, 1, group.I,
                                                     'free_means', 'free_var'))
 coef(model.constrained.I, simplify = T) #different group latent means
 constrained.parameters.I <- coef(model.constrained.I, simplify = T)[[1]][[1]]
-constrained.parameters.I
+constrained.parameters.I #write this out to excel and put it in the manuscript
+
+
+"
+##### first round of DIF analyses - All Others As Anchors #####
+"
+## realistic ##
+(dif.drop.R <- DIF(model.constrained.R, c('a1','d1','d2','d3','d4'), scheme="drop", seq_stat = 0.5)) #gives us chi-square - compares constrained baseline model to model where items in ? have been freed up across groups
+
+# Adam's function that tables the output --> all items have DIF
+get.dif.items(f.data=dif.drop.R, p.val=.05, parms=constrained.parameters.R)
+
+## investigative ##
+(dif.drop.I <- DIF(model.constrained.I, c('a1','d1','d2','d3','d4'), scheme="drop", seq_stat = 0.5)) #same as above
+
+# Adam's function that tables the output --> all items have DIF
+get.dif.items(f.data=dif.drop.I, p.val=.05, parms=constrained.parameters.I)
+
+
+"
+#### Run an anchor-item model ####
+"
+itemnames.R <- colnames(R)
+anc.items.names.R <- itemnames.R[c(1)] 
