@@ -103,5 +103,45 @@ get.dif.items(f.data=dif.drop.I, p.val=.05, parms=constrained.parameters.I)
 "
 #### Run an anchor-item model ####
 "
+## Realistic
 itemnames.R <- colnames(R)
 anc.items.names.R <- itemnames.R[c(1)] 
+test.items.R <- c(2:8)
+model_anchor.R <- multipleGroup(R, model = 1, group = group.R,
+                              invariance = c(anc.items.names.R, 'free_means', 'free_var'))
+(anchor.parms.R <-coef(model_anchor.R,simplify = TRUE)[[1]][[1]])
+
+
+"
+#### Final round of DIF ####
+"
+## Realistic
+(dif.anchor.R <- DIF(model_anchor.R, c('a1','d1','d2','d3'), items2test = test.items.R, plotdif = TRUE))
+## use the optional function to table the output
+get.dif.items(f.data=dif.anchor.R, p.val=.05, parms = anchor.parms.R)
+
+
+"
+#### compute effect sizes ####
+"
+## Realistic
+empirical_ES(model_anchor.R, DIF=FALSE)  # test level stats
+empirical_ES(model_anchor.R)             # item level stats
+expected.test.plot.R <- empirical_ES(model_anchor.R, DIF=FALSE, plot=TRUE)  # expected test score plots
+expected.item.plots.R <- empirical_ES(model_anchor.R, plot=TRUE)             # expected item score plots
+itemplot(model_anchor.R, 5) # further investigate item with DF
+
+
+
+"
+#### lattice graph plots ####
+"
+## Realistic
+expected.test.plot.R$main <- "ETS for Reference and Focal Groups"
+expected.test.plot.R$legend$top$args$key$text[[1]] <- c('Focal', 'Reference')
+expected.test.plot.R
+mirtCluster(remove=TRUE)
+
+
+
+

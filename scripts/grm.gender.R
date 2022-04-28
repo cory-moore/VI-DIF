@@ -60,7 +60,8 @@ demo <- vi %>%
   select(c(education,
            gender,
            age,
-           race))
+           race,
+           country))
 
 
 ### Inspect the data a bit ###
@@ -90,7 +91,7 @@ write.csv(I, "data/investigative.csv", row.names=F)
 ## Realistic dimension                  ##
 "
 
-#scree plots
+#scree plots  <-- need to do this for each group, men and women
 fa.parallel(I)
 fa.parallel(R)
 
