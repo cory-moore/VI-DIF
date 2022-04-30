@@ -13,12 +13,26 @@ vi <- read.delim("data/data.csv", header=TRUE)
 
 
 ###### SUBSET DATA:  ########
-# remove cases that completed RIASEC and demographic items in <2.5 sec / items &
+# first, id top five hispanic countries and collapse them into a single category
+# countries to include= mexico (MX), puerto rico (PR), cuba (CU), el salvador (SV), dominican republic (DO)
+# top five hispanic representation in the US
+table(vi$country)
+
+#rename countries to HS (Hispanic)
+vi$country <- dplyr::recode(vi$country,
+              'MX' = "HS",
+              'PR' = "HS",
+              'CU' = "HS",
+              'SV' = "HS",
+              'DO' = "HS")
+                    
+
+# remove cases that completed RIASEC and demographic items in <3 sec / items &
 # remove that are not US respondents (avoid cultural confounding)
 vi <- vi %>% 
-  filter(testelapse > 125, 
+  filter(country %in% c("HS","US"),
+         testelapse > 125, 
          surveyelapse > 75,
-         country == c("MX","US"),
          age < 100) #should I be more stringent?
  
 
@@ -72,6 +86,7 @@ boxplot(R)
 boxplot(vi$age)
 summary(vi$age)
 apply(vi, 2, table)
+table(vi$country)
 
 
 ### Export all dataframes to csv files for DIF script
