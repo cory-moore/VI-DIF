@@ -169,10 +169,11 @@ R.us <- vi.us %>%
   select(c(R1,R2,R3,R4,R5,R6,R7,R8))
 
 vi.mx <- filter(vi, country=="MX")
-I.mx <- vi.us %>%
+I.mx <- vi.mx %>%
   select(c(I1,I2,I3,I4,I5,I6,I7,I8))
 R.mx <- vi.mx %>%
   select(c(R1,R2,R3,R4,R5,R6,R7,R8))
+
 
 # combined models
 grm.I.out <- mirt(I, model=1, itemtype="graded", SE=TRUE)

@@ -130,7 +130,7 @@ Call:
 mirt(data = I.mx, model = 1, itemtype = "graded", SE = TRUE)
 
 Full-information item factor analysis with 1 factor(s).
-Converged within 0.0001 tolerance after 64 EM iterations.
+Converged within 0.0001 tolerance after 33 EM iterations.
 mirt version: 1.35.1 
 M-step optimizer: BFGS 
 EM acceleration: Ramsay 
@@ -139,13 +139,13 @@ Latent density type: Gaussian
 
 Information matrix estimated with method: Oakes
 Second-order test: model is a possible local maximum
-Condition number of information matrix =  112.8588
+Condition number of information matrix =  103.5431
 
-Log-likelihood = -664542.7
+Log-likelihood = -2988.649
 Estimated parameters: 40 
-AIC = 1329165
-BIC = 1329527; SABIC = 1329399
-G2 (390584) = 180179, p = 1
+AIC = 6057.298
+BIC = 6203.397; SABIC = 6076.555
+G2 (390584) = 2801.83, p = 1
 RMSEA = 0, CFI = NaN, TLI = NaN
 > 
 
@@ -240,15 +240,15 @@ RMSEA = 0, CFI = NaN, TLI = NaN
 > 
 > fit.I.mx <- itemfit(grm.I.mx, x2=TRUE)
 > fit.I.mx
-  item     S_X2 df.S_X2 RMSEA.S_X2 p.S_X2
-1   I1  887.765      95      0.012      0
-2   I2  590.274      95      0.009      0
-3   I3  922.149      91      0.012      0
-4   I4  812.928      95      0.011      0
-5   I5 1457.534      87      0.016      0
-6   I6  989.528      95      0.012      0
-7   I7 1399.729      89      0.015      0
-8   I8 1173.712      95      0.014      0
+  item   S_X2 df.S_X2 RMSEA.S_X2 p.S_X2
+1   I1 64.334      53      0.027  0.137
+2   I2 45.016      53      0.000  0.774
+3   I3 34.698      33      0.013  0.387
+4   I4 63.408      57      0.020  0.261
+5   I5 30.131      35      0.000  0.702
+6   I6 56.515      38      0.041  0.027
+7   I7 44.229      40      0.019  0.298
+8   I8 64.295      53      0.027  0.138
 > 
 > fit.R.mx <- itemfit(grm.R.mx, x2=TRUE)
 > fit.R.mx

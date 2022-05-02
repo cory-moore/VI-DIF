@@ -99,7 +99,7 @@ gender.us <- demo.us %>%
 gender.us
 
 # to excel output
-write.xlsx(as.data.frame(gender), file="output/output.xlsx",sheetName="gender.us",col.names=TRUE,row.names=FALSE,append=TRUE)
+write.xlsx(as.data.frame(gender.us), file="output/output.xlsx",sheetName="gender.us",col.names=TRUE,row.names=FALSE,append=TRUE)
 
 # Education
 education.us <- demo.us %>%
@@ -110,7 +110,7 @@ education.us <- demo.us %>%
 education.us
 
 # to excel output
-write.xlsx(as.data.frame(education), file="output/output.xlsx",sheetName="education.us",col.names=TRUE,row.names=FALSE,append=TRUE)
+write.xlsx(as.data.frame(education.us), file="output/output.xlsx",sheetName="education.us",col.names=TRUE,row.names=FALSE,append=TRUE)
 
 # Race
 race.us <- demo.us %>%
@@ -121,7 +121,7 @@ race.us <- demo.us %>%
 race.us
 
 # to excel output
-write.xlsx(as.data.frame(race), file="output/output.xlsx",sheetName="race.us",col.names=TRUE,row.names=FALSE,append=TRUE)
+write.xlsx(as.data.frame(race.us), file="output/output.xlsx",sheetName="race.us",col.names=TRUE,row.names=FALSE,append=TRUE)
 
 
 # AGE
@@ -130,7 +130,7 @@ age.us <- psych::describe(demo.us$age)
 age.us
 
 # to excel output
-write.xlsx(as.data.frame(age), file="output/output.xlsx",sheetName="age.us",col.names=TRUE,row.names=FALSE,append=TRUE)
+write.xlsx(as.data.frame(age.us), file="output/output.xlsx",sheetName="age.us",col.names=TRUE,row.names=FALSE,append=TRUE)
 
 
 "#### demographics for MX  ####"
@@ -143,7 +143,7 @@ gender.mx <- demo.mx %>%
 gender.mx
 
 # to excel output
-write.xlsx(as.data.frame(gender), file="output/output.xlsx",sheetName="gender.mx",col.names=TRUE,row.names=FALSE,append=TRUE)
+write.xlsx(as.data.frame(gender.mx), file="output/output.xlsx",sheetName="gender.mx",col.names=TRUE,row.names=FALSE,append=TRUE)
 
 # Education
 education.mx <- demo.mx %>%
@@ -154,7 +154,7 @@ education.mx <- demo.mx %>%
 education.mx
 
 # to excel output
-write.xlsx(as.data.frame(education), file="output/output.xlsx",sheetName="education.mx",col.names=TRUE,row.names=FALSE,append=TRUE)
+write.xlsx(as.data.frame(education.mx), file="output/output.xlsx",sheetName="education.mx",col.names=TRUE,row.names=FALSE,append=TRUE)
 
 # Race
 race.mx <- demo.mx %>%
@@ -165,7 +165,7 @@ race.mx <- demo.mx %>%
 race.mx
 
 # to excel output
-write.xlsx(as.data.frame(race), file="output/output.xlsx",sheetName="race.mx",col.names=TRUE,row.names=FALSE,append=TRUE)
+write.xlsx(as.data.frame(race.mx), file="output/output.xlsx",sheetName="race.mx",col.names=TRUE,row.names=FALSE,append=TRUE)
 
 
 # AGE
@@ -174,4 +174,4 @@ age.mx <- psych::describe(demo.mx$age)
 age.mx
 
 # to excel output
-write.xlsx(as.data.frame(age), file="output/output.xlsx",sheetName="age.mx",col.names=TRUE,row.names=FALSE,append=TRUE)
+write.xlsx(as.data.frame(age.mx), file="output/output.xlsx",sheetName="age.mx",col.names=TRUE,row.names=FALSE,append=TRUE)
