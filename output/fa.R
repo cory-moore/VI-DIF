@@ -1,4 +1,77 @@
 
+" RELIABILTY"
+I.alpha <- psych::alpha(I)
+> I.alpha
+
+Reliability analysis   
+Call: psych::alpha(x = I)
+
+  raw_alpha std.alpha G6(smc) average_r S/N     ase mean sd median_r
+      0.88      0.88    0.89      0.48 7.4 0.00073    3  1     0.49
+
+ lower alpha upper     95% confidence boundaries
+0.88 0.88 0.88 
+
+ Reliability if an item is dropped:
+   raw_alpha std.alpha G6(smc) average_r S/N alpha se var.r med.r
+I1      0.88      0.88    0.89      0.51 7.2  0.00075 0.019  0.53
+I2      0.87      0.87    0.88      0.49 6.6  0.00081 0.018  0.50
+I3      0.86      0.86    0.87      0.46 5.9  0.00088 0.019  0.46
+I4      0.88      0.88    0.89      0.50 7.0  0.00076 0.020  0.49
+I5      0.85      0.85    0.86      0.45 5.8  0.00091 0.020  0.45
+I6      0.86      0.86    0.87      0.47 6.1  0.00086 0.020  0.46
+I7      0.86      0.85    0.87      0.46 5.9  0.00089 0.021  0.46
+I8      0.88      0.88    0.89      0.50 7.0  0.00077 0.021  0.52
+
+ Item statistics 
+       n raw.r std.r r.cor r.drop mean  sd
+I1 61890  0.63  0.63  0.55   0.51  3.5 1.3
+I2 61890  0.71  0.72  0.68   0.62  3.4 1.3
+I3 61890  0.81  0.81  0.79   0.74  3.1 1.4
+I4 61890  0.66  0.66  0.59   0.54  3.0 1.4
+I5 61890  0.83  0.83  0.82   0.77  2.9 1.4
+I6 61890  0.78  0.78  0.75   0.70  3.0 1.4
+I7 61890  0.82  0.82  0.80   0.75  2.8 1.4
+I8 61890  0.66  0.66  0.59   0.55  2.5 1.4
+
+> R.alpha <- psych::alpha(R)
+> R.alpha
+
+Reliability analysis   
+Call: psych::alpha(x = R)
+
+  raw_alpha std.alpha G6(smc) average_r S/N     ase mean   sd median_r
+      0.88      0.88    0.88      0.48 7.3 0.00074    2 0.86     0.47
+
+ lower alpha upper     95% confidence boundaries
+0.88 0.88 0.88 
+
+ Reliability if an item is dropped:
+   raw_alpha std.alpha G6(smc) average_r S/N alpha se  var.r med.r
+R1      0.88      0.88    0.88      0.52 7.5  0.00072 0.0078  0.51
+R2      0.86      0.86    0.86      0.47 6.3  0.00086 0.0098  0.46
+R3      0.87      0.87    0.87      0.50 6.9  0.00079 0.0125  0.51
+R4      0.86      0.87    0.86      0.48 6.5  0.00084 0.0144  0.47
+R5      0.86      0.86    0.86      0.47 6.1  0.00086 0.0135  0.45
+R6      0.86      0.86    0.86      0.47 6.1  0.00089 0.0116  0.45
+R7      0.86      0.86    0.86      0.47 6.1  0.00087 0.0135  0.45
+R8      0.85      0.86    0.85      0.46 6.0  0.00089 0.0089  0.45
+
+ Item statistics 
+       n raw.r std.r r.cor r.drop mean  sd
+R1 61890  0.60  0.60  0.50   0.47  2.4 1.3
+R2 61890  0.76  0.76  0.73   0.67  2.1 1.2
+R3 61890  0.65  0.67  0.59   0.55  1.6 1.0
+R4 61890  0.74  0.73  0.68   0.64  2.2 1.3
+R5 61890  0.77  0.78  0.75   0.70  1.7 1.0
+R6 61890  0.79  0.79  0.75   0.71  2.2 1.3
+R7 61890  0.78  0.78  0.75   0.70  1.9 1.1
+R8 61890  0.79  0.79  0.78   0.72  2.0 1.2
+
+
+
+
+
 
 > " OBLIQUE ROTATION  "
 

@@ -14,6 +14,8 @@ vi <- read.delim("data/data.csv", header=TRUE)
 
 ###### SUBSET DATA:  ########
 table(vi$country)
+length(unique(vi$country))
+describe(vi$age)
 
 # remove cases that completed RIASEC and demographic items in <3 sec / items &
 # remove that are not US respondents (avoid cultural confounding)
@@ -120,10 +122,18 @@ write.csv(demo, "data/demo.csv", row.names=F)
   ############"
 ################
 "
+## internal reliability                 ##
 ## Test assumptions (unidimensionality) ##
 ## Investigative dimension &            ##
 ## Realistic dimension                  ##
 "
+
+# internal reliability
+I.alpha <- psych::alpha(I)
+I.alpha
+
+R.alpha <- psych::alpha(R)
+R.alpha
 
 #scree plots  
 fa.parallel(I)

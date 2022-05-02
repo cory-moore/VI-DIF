@@ -148,7 +148,7 @@ get.dif.items(f.data=dif.anchor.I, p.val=.05, parms = anchor.parms.I)
 
 ## Realistic
 (dif.anchor.R <- DIF(model_anchor.R, c('a1','d1','d2','d3'), items2test = test.items.R, plotdif = TRUE,technical = list(NCYCLES = 2000)))
-dif.anchor.R
+dif.an
 ## use the optional function to table the output
 get.dif.items(f.data=dif.anchor.R, p.val=.05, parms = anchor.parms.R)
 
