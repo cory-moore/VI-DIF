@@ -209,41 +209,26 @@ grm.R.mx
 "
 ### Assess model fit ###
 "
-##### COMBINED #####
+mirtCluster(4)
+### SPLIT BY GROUP (US(reference) and MX(focal)) 
+#model fit
+coef(grm.I.us)
+M2(grm.I.us, type="C2")
 
-# Investigative
-fit.I <- itemfit(grm.I.out, x2=TRUE)
-fit.I
+coef(grm.R.us)
+M2(grm.R.us, type="C2")
 
-plots.I.1 <- list()
-for(i in 1:length(I)){
-  plots.I.1[[i]] <-itemfit(grm.I.out, empirical.plot = i)
-}
-plots.I.1
+coef(grm.I.mx)
+M2(grm.I.mx, type="C2")
 
-# Realistic
-fit.R <- itemfit(grm.R.out, x2=TRUE)
-fit.R
+coef(grm.R.mx)
+M2(grm.R.mx, type="C2")
 
-plots.R.1 <- list()
-for(i in 1:length(I)){
-  plots.R.1[[i]] <-itemfit(grm.R.out, empirical.plot = i)
-}
-plots.R.1
+(grm.I.us.item.fit <- itemfit(grm.I.us))
+(grm.R.us.item.fit <- itemfit(grm.R.us))
+(grm.I.mx.item.fit <- itemfit(grm.I.mx))
+(grm.R.mx.item.fit <- itemfit(grm.R.mx))
 
-
-##### SPLIT BY GROUPS #####
-fit.I.us <- itemfit(grm.I.us, x2=TRUE)
-fit.I.us
-
-fit.R.us <- itemfit(grm.R.us, x2=TRUE)
-fit.R.us
-
-fit.I.mx <- itemfit(grm.I.mx, x2=TRUE)
-fit.I.mx
-
-fit.R.mx <- itemfit(grm.R.mx, x2=TRUE)
-fit.R.mx
 
 "
 ### look at model probability functions and parameters ###
