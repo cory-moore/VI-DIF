@@ -272,3 +272,5 @@ plots.R.2 ##prob functions not  bad
 par.SE.R <- coef(grm.R.out, IRTpars=TRUE, printSE=TRUE) #print SE from non-IRT format
 par.SE.R
 
+mirtCluster(remove=TRUE) #turns off extra processors
+
