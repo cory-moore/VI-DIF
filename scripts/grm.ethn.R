@@ -267,10 +267,38 @@ for(i in 1:length(I)){
 }
 plots.R.2 ##prob functions not  bad 
 
-#item parameters
+#item parameters (combined groups for R and I)
 (coef.table.R <- coef(grm.R.out, simplify = TRUE, IRTpars = TRUE)[[1]])
 par.SE.R <- coef(grm.R.out, IRTpars=TRUE, printSE=TRUE) #print SE from non-IRT format
 par.SE.R
+
+(coef.table.I <- coef(grm.I.out, simplify = TRUE, IRTpars = TRUE)[[1]])
+par.SE.I <- coef(grm.I.out, IRTpars=TRUE, printSE=TRUE) #print SE from non-IRT format
+par.SE.I
+
+
+#items paramets by group by interest
+(coef.table.R.us <- coef(grm.R.us, simplify = TRUE, IRTpars = TRUE)[[1]])
+par.SE.R.us <- coef(grm.R.us, IRTpars=TRUE, printSE=TRUE) #print SE from non-IRT format
+par.SE.R.us
+
+(coef.table.I.us <- coef(grm.I.us, simplify = TRUE, IRTpars = TRUE)[[1]])
+par.SE.I.us <- coef(grm.I.us, IRTpars=TRUE, printSE=TRUE) #print SE from non-IRT format
+par.SE.I.us
+
+(coef.table.R.mx <- coef(grm.R.mx, simplify = TRUE, IRTpars = TRUE)[[1]])
+par.SE.R.mx <- coef(grm.R.umx, IRTpars=TRUE, printSE=TRUE) #print SE from non-IRT format
+par.SE.R.us
+
+(coef.table.I.mx <- coef(grm.I.mx, simplify = TRUE, IRTpars = TRUE)[[1]])
+par.SE.I.mx <- coef(grm.I.mx, IRTpars=TRUE, printSE=TRUE) #print SE from non-IRT format
+par.SE.I.mx
+
+#write to excel
+write.xlsx(as.data.frame(coef.table.R.us), file="output/output.xlsx",sheetName="grm.par.R.us",col.names=TRUE,row.names=TRUE,append=TRUE)
+write.xlsx(as.data.frame(coef.table.I.us), file="output/output.xlsx",sheetName="grm.par.I.us",col.names=TRUE,row.names=TRUE,append=TRUE)
+write.xlsx(as.data.frame(coef.table.R.mx), file="output/output.xlsx",sheetName="grm.par.R.mx",col.names=TRUE,row.names=TRUE,append=TRUE)
+write.xlsx(as.data.frame(coef.table.I.mx), file="output/output.xlsx",sheetName="grm.par.I.mx",col.names=TRUE,row.names=TRUE,append=TRUE)
 
 mirtCluster(remove=TRUE) #turns off extra processors
 
