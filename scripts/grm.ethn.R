@@ -7,6 +7,8 @@ library(mirt)
 library(Hmisc)
 library(factoextra)
 library(sjmisc)
+install.packages("stats")
+library(stats)
 
 #import data
 vi <- read.delim("data/data.csv", header=TRUE)
@@ -138,6 +140,11 @@ R.alpha
 #scree plots  
 fa.parallel(I)
 fa.parallel(R)
+
+I2 <- prcomp(I, scale=TRUE)
+screeplot(I2, type = "lines") #eigenvalues 
+R2 <- prcomp(R, scale=TRUE)
+screeplot(R2, type = "lines") 
 
 #oblique rotation
 efa.I <- fa(I, nfactors=1, rotate="oblimin") #Investigative dimension
